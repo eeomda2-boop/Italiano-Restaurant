@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Italiano — Pizza | القاهرة</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --red:#C0392B; /* Italian red */
+      --cream:#FFF5E1;
+      --dark:#1C1C1C;
+      --accent:#F4D03F;
+      --glass: rgba(255,255,255,0.07);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;font-family:Poppins, Cairo, system-ui, sans-serif;color:var(--dark);background:linear-gradient(180deg,#fff,#fff);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+    }
+
+    /* HEADER */
+    header{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;background:linear-gradient(90deg,rgba(0,0,0,0.03),transparent);position:sticky;top:0;backdrop-filter: blur(6px);z-index:50}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:48px;height:48px;border-radius:10px;background:var(--red);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px}
+    .brand h1{margin:0;font-size:18px}
+    nav{display:flex;gap:14px;align-items:center}
+    nav a{color:var(--dark);text-decoration:none;padding:8px 12px;border-radius:8px}
+    nav a.btn{background:var(--red);color:#fff}
+
+    .lang-toggle{display:flex;border-radius:8px;overflow:hidden;border:1px solid rgba(0,0,0,0.06)}
+    .lang-toggle button{background:transparent;border:0;padding:8px 10px;cursor:pointer;font-weight:600}
+    .lang-toggle button.active{background:#fff;color:var(--dark)}
+
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:32px;padding:48px 6vw;align-items:center}
+    .hero-left{max-width:740px}
+    .kicker{background:var(--accent);display:inline-block;padding:6px 10px;border-radius:999px;font-weight:700;margin-bottom:14px}
+    .headline{font-size:42px;line-height:1.02;margin:6px 0 18px;font-weight:700}
+    .sub{color:#333;font-size:18px;margin-bottom:22px}
+    .cta{display:flex;gap:12px}
+    .btn-primary{background:var(--red);color:#fff;padding:12px 18px;border-radius:10px;border:0;cursor:pointer;font-weight:700}
+    .btn-secondary{background:transparent;border:2px solid var(--red);color:var(--red);padding:10px 16px;border-radius:10px;cursor:pointer}
+
+    /* RIGHT CARD */
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.98),#fff);padding:18px;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,0.08)}
+    .pizza-thumb{width:100%;height:220px;border-radius:10px;background-size:cover;background-position:center;margin-bottom:14px}
+    .pizza-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+    .price{font-weight:700;color:var(--red)}
+
+    /* FEATURES */
+    .features{display:flex;gap:18px;padding:36px 6vw;background:linear-gradient(180deg,#fff,#fff)}
+    .feature{flex:1;background:var(--cream);padding:18px;border-radius:12px;text-align:center}
+    .feature h4{margin:8px 0 4px}
+
+    /* MENU PREVIEW */
+    .menu-preview{padding:36px 6vw}
+    .menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+    .menu-card{background:#fff;border-radius:12px;padding:14px;border:1px solid rgba(0,0,0,0.04)}
+    .menu-card img{width:100%;height:140px;object-fit:cover;border-radius:8px}
+    .menu-card h5{margin:10px 0 6px}
+    .menu-card p{margin:0 0 8px;color:#666}
+    .menu-footer{display:flex;justify-content:space-between;align-items:center}
+
+    /* ORDER FORM */
+    .order-section{padding:36px 6vw;background:linear-gradient(180deg,#fff,#fff)}
+    form.order-form{max-width:920px;margin:auto;display:grid;grid-template-columns:1fr 380px;gap:18px}
+    .form-left{display:grid;gap:12px}
+    label{font-size:13px;color:#333}
+    input,select,textarea{padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,0.08);width:100%;font-size:15px}
+    .summary{background:#fff;padding:14px;border-radius:12px;border:1px solid rgba(0,0,0,0.04)}
+    .summary h4{margin-top:0}
+    .submit-row{display:flex;gap:10px;margin-top:10px}
+
+    /* FOOTER */
+    footer{padding:22px 6vw;background:#111;color:#fff;margin-top:32px}
+    footer .wrap{display:flex;justify-content:space-between;gap:20px;align-items:center}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;gap:18px;padding:28px}
+      form.order-form{grid-template-columns:1fr}
+      .hero-left .headline{font-size:30px}
+    }
+
+    /* RTL adjustments when dir=rtl */
+    :root[dir="rtl"] .brand{flex-direction:row-reverse}
+    [dir="rtl"] nav a{direction:rtl}
+    [dir="rtl"] .kicker{direction:rtl}
+    [dir="rtl"] .headline{direction:rtl}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">I</div>
+      <div>
+        <h1 id="site-title">Italiano</h1>
+        <div style="font-size:12px;color:#666" id="site-sub">Authentic Italian Pizza — القاهرة</div>
+      </div>
+    </div>
+
+    <nav>
+      <a href="#menu" id="nav-menu">Menu</a>
+      <a href="#order" class="btn" id="nav-order">Order Now</a>
+      <div class="lang-toggle" role="tablist" aria-label="Language">
+        <button id="btn-en" class="active">EN</button>
+        <button id="btn-ar">ع</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="Hero">
+      <div class="hero-left">
+        <div class="kicker" id="kicker">Fresh & Fast</div>
+        <h2 class="headline" id="headline">Welcome to <span style="color:var(--red)">Italiano</span> — Authentic Italian Pizza in the Heart of Cairo</h2>
+        <p class="sub" id="sub">Experience handcrafted Italian pizza made with fresh ingredients and daily-prepared dough, delivered hot and fast to your doorstep.</p>
+        <div class="cta">
+          <button class="btn-primary" id="main-order">Order Now</button>
+          <button class="btn-secondary" id="main-menu">View Menu</button>
+        </div>
+      </div>
+
+      <aside>
+        <div class="card">
+          <div class="pizza-thumb" id="thumb" style="background-image:url('https://images.unsplash.com/photo-1601924582975-4b58a6b3a3d6?q=80&w=1200&auto=format&fit=crop');"></div>
+          <div class="pizza-title">
+            <div>
+              <div style="font-weight:700">Margherita</div>
+              <div style="font-size:13px;color:#666">Fresh mozzarella & basil</div>
+            </div>
+            <div class="price">120 EGP</div>
+          </div>
+          <p style="color:#555;font-size:14px;margin-top:10px">Hand-stretched dough, baked to a perfect golden crust. Try it with our signature tomato sauce.</p>
+        </div>
+      </aside>
+    </section>
+
+    <section class="features" aria-label="Why choose us">
+      <div class="feature">
+        <strong id="f1">100% Fresh</strong>
+        <div style="font-size:13px;color:#555">Ingredients sourced daily</div>
+      </div>
+      <div class="feature">
+        <strong id="f2">Wood-fired Flavor</strong>
+        <div style="font-size:13px;color:#555">Traditional stone oven taste</div>
+      </div>
+      <div class="feature">
+        <strong id="f3">Fast Delivery</strong>
+        <div style="font-size:13px;color:#555">Across Cairo within 30–45 mins</div>
+      </div>
+    </section>
+
+    <section id="menu" class="menu-preview" aria-label="Menu preview">
+      <h3 id="menu-title">Popular Pizzas</h3>
+      <div class="menu-grid">
+        <article class="menu-card">
+          <img src="https://images.unsplash.com/photo-1548365328-8f0d1bd3f9b0?q=80&w=800&auto=format&fit=crop" alt="Margherita">
+          <h5>Margherita — مارغريتا</h5>
+          <p>Fresh mozzarella, basil. / جبنة موزاريلا طازجة وريحان</p>
+          <div class="menu-footer"><div class="price">120 EGP</div><button class="btn-primary" onclick="addToCart('Margherita',120)">Add</button></div>
+        </article>
+
+        <article class="menu-card">
+          <img src="https://images.unsplash.com/photo-1601924582975-4b58a6b3a3d6?q=80&w=800&auto=format&fit=crop" alt="Pepperoni">
+          <h5>Pepperoni — بيبروني</h5>
+          <p>Spicy pepperoni slices. / شرائح بيبروني حارة</p>
+          <div class="menu-footer"><div class="price">150 EGP</div><button class="btn-primary" onclick="addToCart('Pepperoni',150)">Add</button></div>
+        </article>
+
+        <article class="menu-card">
+          <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?q=80&w=800&auto=format&fit=crop" alt="BBQ Chicken">
+          <h5>BBQ Chicken — دجاج باربكيو</h5>
+          <p>Smoky BBQ chicken. / دجاج متبل مع صوص الباربكيو</p>
+          <div class="menu-footer"><div class="price">160 EGP</div><button class="btn-primary" onclick="addToCart('BBQ Chicken',160)">Add</button></div>
+        </article>
+
+        <article class="menu-card">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop" alt="Four Cheese">
+          <h5>Four Cheese — أربعة أجبان</h5>
+          <p>Parmesan, mozzarella, cheddar & blue. / تشكيلة أجبان مميزة</p>
+          <div class="menu-footer"><div class="price">170 EGP</div><button class="btn-primary" onclick="addToCart('Four Cheese',170)">Add</button></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="order" class="order-section" aria-label="Order">
+      <h3 id="order-title">Order Online</h3>
+      <form class="order-form" onsubmit="return submitOrder(event)">
+        <div class="form-left">
+          <label for="name" id="lbl-name">Full Name / الاسم الكامل</label>
+          <input id="name" name="name" required>
+
+          <label for="phone" id="lbl-phone">Phone Number / رقم الهاتف</label>
+          <input id="phone" name="phone" required>
+
+          <label for="address" id="lbl-address">Address / العنوان</label>
+          <textarea id="address" name="address" rows="3" required></textarea>
+
+          <label for="notes" id="lbl-notes">Notes / ملاحظات</label>
+          <textarea id="notes" name="notes" rows="2"></textarea>
+        </div>
+
+        <aside class="summary">
+          <h4 id="summary-title">Order Summary</h4>
+          <div id="cart-items" style="min-height:120px">No items yet.</div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px"><div>Total:</div><div id="cart-total">0 EGP</div></div>
+          <div class="submit-row">
+            <button type="submit" class="btn-primary" id="confirm-btn">Confirm Order / تأكيد الطلب</button>
+            <button type="button" class="btn-secondary" onclick="clearCart()">Clear</button>
+          </div>
+          <p style="font-size:13px;color:#666;margin-top:8px">Delivery within Cairo. Cash on delivery available.</p>
+        </aside>
+      </form>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>
+        <strong id="footer-name">Italiano</strong>
+        <div style="font-size:13px;color:#ddd">Open daily 11:00 — 23:00</div>
+      </div>
+      <div style="text-align:right">
+        <div>Phone: +20 100 000 0000</div>
+        <div>WhatsApp: +20 100 000 0000</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Basic cart
+    let cart = [];
+    function addToCart(name,price){
+      const found = cart.find(i=>i.name===name);
+      if(found) found.qty++;
+      else cart.push({name,price,qty:1});
+      renderCart();
+      document.getElementById('main-order').scrollIntoView({behavior:'smooth'});
+    }
+    function renderCart(){
+      const el = document.getElementById('cart-items');
+      if(cart.length===0){el.innerHTML='No items yet.';document.getElementById('cart-total').innerText='0 EGP';return}
+      el.innerHTML='';
+      let total=0;
+      cart.forEach(item=>{
+        total+=item.price*item.qty;
+        const row = document.createElement('div');
+        row.style.display='flex';row.style.justifyContent='space-between';row.style.marginBottom='8px';
+        row.innerHTML = `<div>${item.name} x ${item.qty}</div><div>${item.price*item.qty} EGP</div>`;
+        el.appendChild(row);
+      });
+      document.getElementById('cart-total').innerText = total + ' EGP';
+    }
+    function clearCart(){cart=[];renderCart();}
+
+    // Submit order -> open WhatsApp or mailto fallback
+    function submitOrder(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const address = document.getElementById('address').value.trim();
+      const notes = document.getElementById('notes').value.trim();
+      if(cart.length===0){alert(currentText().noItems || 'Please add items to your order.');return}
+      let message = `Order from Italiano%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0AAddress: ${encodeURIComponent(address)}%0AItems:%0A`;
+      cart.forEach(i=>{message+=encodeURIComponent(`- ${i.name} x ${i.qty} = ${i.price*i.qty} EGP`)+ '%0A'});
+      message += `%0ATotal: ${encodeURIComponent(document.getElementById('cart-total').innerText)}%0ANotes: ${encodeURIComponent(notes)}`;
+      // WhatsApp example number (replace with your business number)
+      const waNumber = '201000000000';
+      const waUrl = `https://wa.me/${waNumber}?text=${message}`;
+      window.open(waUrl,'_blank');
+      return false;
+    }
+
+    // Language toggle
+    const texts = {
+      en:{
+        kicker:'Fresh & Fast',
+        headline:'Welcome to Italiano — Authentic Italian Pizza in the Heart of Cairo',
+        sub:'Experience handcrafted Italian pizza made with fresh ingredients and daily-prepared dough, delivered hot and fast to your doorstep.',
+        menuTitle:'Popular Pizzas',
+        orderTitle:'Order Online',
+        summaryTitle:'Order Summary',
+        btnOrder:'Order Now',
+        btnMenu:'View Menu',
+        navOrder:'Order Now',
+        navMenu:'Menu',
+        noItems:'Please add items to your order.'
+      },
+      ar:{
+        kicker:'طازجة وسريعة',
+        headline:'مرحبًا بك في إيتاليانو — بيتزا إيطالية أصلية في قلب القاهرة',
+        sub:'تذوق بيتزا إيطالية محضّرة يدويًا بمكونات طازجة وعجينة يومية، وتصل ساخنة وسريعة إلى باب منزلك.',
+        menuTitle:'أشهر أنواع البيتزا',
+        orderTitle:'الطلب أونلاين',
+        summaryTitle:'ملخص الطلب',
+        btnOrder:'اطلب الآن',
+        btnMenu:'عرض القائمة',
+        navOrder:'اطلب الآن',
+        navMenu:'القائمة',
+        noItems:'أضف عناصر إلى طلبك من فضلك.'
+      }
+    };
+
+    function setLanguage(lang){
+      const root = document.documentElement;
+      if(lang==='ar'){
+        root.setAttribute('dir','rtl');
+        root.setAttribute('lang','ar');
+        document.getElementById('btn-ar').classList.add('active');
+        document.getElementById('btn-en').classList.remove('active');
+      } else {
+        root.setAttribute('dir','ltr');
+        root.setAttribute('lang','en');
+        document.getElementById('btn-en').classList.add('active');
+        document.getElementById('btn-ar').classList.remove('active');
+      }
+      // set text
+      const t = texts[lang];
+      document.getElementById('kicker').innerText = t.kicker;
+      document.getElementById('headline').innerText = t.headline;
+      document.getElementById('sub').innerText = t.sub;
+      document.getElementById('menu-title').innerText = t.menuTitle;
+      document.getElementById('order-title').innerText = t.orderTitle;
+      document.getElementById('summary-title').innerText = t.summaryTitle;
+      document.getElementById('main-order').innerText = t.btnOrder;
+      document.getElementById('main-menu').innerText = t.btnMenu;
+      document.getElementById('nav-order').innerText = t.navOrder;
+      document.getElementById('nav-menu').innerText = t.navMenu;
+    }
+
+    document.getElementById('btn-en').addEventListener('click',()=>setLanguage('en'));
+    document.getElementById('btn-ar').addEventListener('click',()=>setLanguage('ar'));
+
+    // Start with Arabic (because user is likely Arabic speaker) — change to 'en' if you prefer
+    setLanguage('ar');
+  </script>
+</body>
+</html>
